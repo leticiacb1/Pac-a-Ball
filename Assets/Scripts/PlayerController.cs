@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -11,12 +12,14 @@ public class PlayerController : MonoBehaviour
     private int totalPickUps = 178;
     private int count = 0;
     private int health = 3;
+
+    //  ----- Scene Number -----
+    private int END_GAME_SCENE = 2;
+    private int WIN_GAME_SCENE = 3;
     
     //  ----- Texts -----
     public TextMeshProUGUI countText;
     public TextMeshProUGUI healthText;
-    public GameObject winTextObject;
-    //public GameObject loseTextObject;
 
     //  ----- Player variables -----
     private Rigidbody rb; 
@@ -29,8 +32,7 @@ public class PlayerController : MonoBehaviour
 
         setCountText();
         setHealth();
-        winTextObject.SetActive(false);
-        //loseTextObject.SetActive(false);
+
     }
 
     void OnMove(InputValue movementValue){
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if(count >= totalPickUps){
             // Win Screen
-            winTextObject.SetActive(true); // Mostra texto de vitória
+            SceneManager.LoadScene(WIN_GAME_SCENE);
         }
     }
 
@@ -52,7 +54,8 @@ public class PlayerController : MonoBehaviour
         healthText.text = health.ToString();
 
         if(health <= 0){
-            winTextObject.SetActive(true); // Mostra texto de derrota
+            //Lose Screen
+            SceneManager.LoadScene(END_GAME_SCENE);
         }
     }
 
