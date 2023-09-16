@@ -6,38 +6,53 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {   
-    // Referencia ao corpo rígido que queremos mexer
+    //  ----- Constants -----
     public float speed = 0;
+    private int totalPickUps = 178;
+    private int count = 0;
+    private int health = 3;
+    
+    //  ----- Texts -----
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI healthText;
     public GameObject winTextObject;
+    //public GameObject loseTextObject;
+
+    //  ----- Player variables -----
     private Rigidbody rb; 
-    private int count;
     private float movementX;
     private float movementY;
 
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>(); // Pega a referencia RigidBody ligada ao Player
+        rb = GetComponent<Rigidbody>(); 
 
-        // Valor inicial da contagem dos PickUps:
-        count = 0;
         setCountText();
-        winTextObject.SetActive(false); // Desativa o texto no inicio do jogo
+        setHealth();
+        winTextObject.SetActive(false);
+        //loseTextObject.SetActive(false);
     }
 
     void OnMove(InputValue movementValue){
         Vector2 movementVector = movementValue.Get<Vector2>();
-
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
 
     void setCountText(){
-        countText.text = "Count : " + count.ToString();
+        countText.text = "PickUp : " + count.ToString() + " | " +  totalPickUps.ToString();
 
-        if(count >= 12){
+        if(count >= totalPickUps){
+            // Win Screen
             winTextObject.SetActive(true); // Mostra texto de vitória
+        }
+    }
+
+    void setHealth(){
+        healthText.text = "Health : " +  health.ToString();
+
+        if(health <= 0){
+            winTextObject.SetActive(true); // Mostra texto de derrota
         }
     }
 
@@ -54,6 +69,15 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             setCountText();
+        }
+
+        if(other.gameObject.CompareTag("Ghost")){
+            
+            // Jogador volta para a posição (0,0) do jogo
+            // Os fantasmas voltam pra sua posição de respaw original
+
+            health = health - 1;
+            setHealth();
         }
     }
 }
