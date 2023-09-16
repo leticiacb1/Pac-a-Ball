@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
 
+    //  ----- Audio -----
+    public AudioSource eat_pickup;
+    public AudioSource hit;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
@@ -70,16 +74,16 @@ public class PlayerController : MonoBehaviour
         
         if(other.gameObject.CompareTag("PickUp")){
             other.gameObject.SetActive(false);
+            eat_pickup.Play();
             count = count + 1;
             setCountText();
         }
 
         if(other.gameObject.CompareTag("Ghost")){
-            
             // Jogador volta para a posição (0,0) do jogo
             // Os fantasmas voltam pra sua posição de respaw original
-
             health = health - 1;
+            hit.Play();
             setHealth();
         }
     }
