@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void setCountText(){
-        countText.text = "PickUp : " + count.ToString() + " | " +  totalPickUps.ToString();
+        countText.text = count.ToString() + " / " +  totalPickUps.ToString();
 
         if(count >= totalPickUps){
             // Win Screen
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void setHealth(){
-        healthText.text = "Health : " +  health.ToString();
+        healthText.text = health.ToString();
 
         if(health <= 0){
             winTextObject.SetActive(true); // Mostra texto de derrota
