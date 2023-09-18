@@ -35,6 +35,13 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public Transform respawPosiiton;
 
+    public Transform respawPosiitonGhost1;
+    public Transform respawPosiitonGhost2;
+    public Transform respawPosiitonGhost3;
+    public Transform respawPosiitonGhost4;
+
+    public GameObject[] ghosts;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
@@ -71,6 +78,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate() {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement*speed);
+
+        if (player.transform.position.y < -5){
+               player.transform.position = respawPosiiton.position;
+          }
     }
 
     // Desativar objetos que o player collidir com
@@ -91,8 +102,14 @@ public class PlayerController : MonoBehaviour
             hit.Play();
             setHealth();
 
-            // Jogador volta para o Respaw
+             // Jogador volta para o Respaw
             player.transform.position = respawPosiiton.position;
+
+            // Paga todos os ghosts e reseta as suas posições
+            ghosts[0].transform.position = respawPosiitonGhost1.position;
+            ghosts[1].transform.position = respawPosiitonGhost2.position;
+            ghosts[2].transform.position = respawPosiitonGhost3.position;
+            ghosts[3].transform.position = respawPosiitonGhost4.position;
 
         }
     }
