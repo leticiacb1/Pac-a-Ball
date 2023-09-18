@@ -39,7 +39,7 @@ beginning of the game.
 
 [UnityPacmania](https://github.com/stuart73/UnityPacmania/tree/master)
 
-[Make a game over screen](https://www.youtube.com/watch?si=-OzKWqUvv18MSsOE&v=28JTTXqMvOU&feature=youtu.be)
+[Make a game over screen](https://www.youtube.com/watch?v=VbZ9_C4-Qbo)
 
 [Add Image and Textures](https://www.youtube.com/watch?si=-W_AGFp1EyI45CjF&v=lcd_lXG0XxI&feature=youtu.be)
 
