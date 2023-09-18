@@ -53,7 +53,8 @@ beginning of the game.
 
 [Moving Background](https://www.youtube.com/watch?si=gUYCRioA-a-8URJS&v=lF26yGJbsQk&feature=youtu.be)
 
+
 <div align= "center">
-<img src ="PlayingGame.webm" />
+<img src ="PlayingGame.gif"/>
 </div>
 
