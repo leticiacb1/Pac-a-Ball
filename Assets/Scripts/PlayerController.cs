@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {   
     //  ----- Constants -----
     public float speed = 0;
-    private int totalPickUps = 178;
+    private int totalPickUps = 179;
     private int count = 0;
     private int health = 3;
 
@@ -96,4 +96,5 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class digitalClock : MonoBehaviour
 {
-    public float TimeLeft = 120.0f;
+    public float TimeLeft = 300.0f;
     public bool TimerOn = false;
     private int END_GAME_SCENE = 2;
 
